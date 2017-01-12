@@ -73,18 +73,20 @@ window.onload = function () {
     // add the cube to the scene
     scene.add(cube);
 
-       var sphereGeometry = new THREE.SphereGeometry(40,200,200);
-        var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff});
-        var sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
+    var sphereGeometry = new THREE.SphereGeometry(40,200,200);
+    var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff});
+    var sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
  
         // position the sphere
-        sphere.position.x=200;
-        sphere.position.y=40;
-        sphere.position.z=20;
-        sphere.castShadow=true;
+    sphere.position.x=200;
+    sphere.position.y=40;
+    sphere.position.z=20;
+    sphere.castShadow=true;
  
         // add the sphere to the scene
-        scene.add(sphere);
+    scene.add(sphere);
+
+    var step = 0;
 
 	function loop() {
 
@@ -94,6 +96,13 @@ window.onload = function () {
 		mesh.position.z += change.positionZ;
 		mesh.position.x += change.positionX;
 		mesh.position.y += change.positionY;
+
+		cube.rotation.x += 0.0;
+ 		cube.rotation.y += 0.0;
+ 		cube.rotation.z += 0.0;
+ 		cube.position.x = 200+( 100*(Math.cos(step)));
+ 		cube.position.y = 25 +( 100*Math.abs(Math.sin(step)));
+ 		step+=0.02;
 
 		renderer.render(scene, camera);
 		requestAnimationFrame (function(){loop();});
